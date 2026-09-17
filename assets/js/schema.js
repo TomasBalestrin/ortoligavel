@@ -42,7 +42,7 @@
       geo: { "@type": "GeoCoordinates", latitude: u.geo.lat, longitude: u.geo.lng },
       telephone: ok(u.telefone),
       email: ok(C.email),
-      sameAs: [C.instagram].filter(Boolean)
+      sameAs: [ok(u.instagram) || ok(C.instagram)].filter(Boolean)
     };
     // Remove campos vazios do endereço
     Object.keys(no.address).forEach(function (k) {

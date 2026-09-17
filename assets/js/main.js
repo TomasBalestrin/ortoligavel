@@ -25,12 +25,6 @@
     return "https://wa.me/" + String(num).replace(/\D/g, "") + "?text=" + msg;
   }
 
-  function linkTel(uni) {
-    var t = uni && uni.telefone;
-    if (faltando(t)) return "#unidades";
-    return "tel:" + String(t).replace(/[^\d+]/g, "");
-  }
-
   // Preenche qualquer elemento marcado com data-orto="chave"
   document.querySelectorAll("[data-orto]").forEach(function (el) {
     var chave = el.getAttribute("data-orto");
@@ -38,11 +32,16 @@
     var uni = uniId && (C.unidades || []).filter(function (u) { return u.id === uniId; })[0];
 
     if (chave === "zap-href") { el.setAttribute("href", linkZap(uni || (C.unidades || [])[0])); return; }
-    if (chave === "tel-href") { el.setAttribute("href", linkTel(uni)); return; }
     if (chave === "maps-href") {
       var m = uni && uni.mapsUrl;
       if (faltando(m)) { el.setAttribute("href", "#unidades"); el.setAttribute("aria-disabled", "true"); }
       else { el.setAttribute("href", m); }
+      return;
+    }
+    if (chave === "instagram-href") {
+      var ig = (uni && uni.instagram) || C.instagram;
+      if (faltando(ig)) { el.setAttribute("href", "#unidades"); el.setAttribute("aria-disabled", "true"); }
+      else { el.setAttribute("href", ig); }
       return;
     }
     var valor = uni ? uni[chave] : C[chave];

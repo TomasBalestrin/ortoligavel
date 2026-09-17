@@ -10,7 +10,8 @@ window.ORTO = {
   email: "[EMAIL DA CLINICA]",
   cro: "[CRO DA CLINICA]",
   responsavelTecnico: "[DR. CLAUDIO FIGUEIREDO, CRO/SP 00000]",
-  instagram: "https://www.instagram.com/dr.claudiofigueiredo",
+  // Instagram do rodapé geral: aponta para a unidade matriz (Santos).
+  instagram: "https://www.instagram.com/ortoligavel_santos/",
   horario: "[SEG A SEX, 9H AS 19H]",
 
   unidades: [
@@ -19,11 +20,12 @@ window.ORTO = {
       cidade: "Santos",
       uf: "SP",
       regiao: "Baixada Santista",
-      endereco: "[ENDERECO COMPLETO SANTOS]",
-      bairro: "[BAIRRO]",
-      cep: "[CEP SANTOS]",
-      telefone: "[+551300000000]",
-      whatsapp: "[5513000000000]",
+      endereco: "Al. Armênio Mendes, 66 - Sl 1801, Aparecida",
+      bairro: "Aparecida",
+      cep: "11030-000",
+      telefone: null,
+      whatsapp: "5513996545599",
+      instagram: "https://www.instagram.com/ortoligavel_santos/",
       mapsUrl: "[LINK GOOGLE MAPS SANTOS]",
       geo: { lat: "-23.9608", lng: "-46.3336" }
     },
@@ -32,11 +34,12 @@ window.ORTO = {
       cidade: "João Pessoa",
       uf: "PB",
       regiao: "Paraíba",
-      endereco: "[ENDERECO COMPLETO JOAO PESSOA]",
-      bairro: "[BAIRRO]",
-      cep: "[CEP JOAO PESSOA]",
-      telefone: "[+558300000000]",
-      whatsapp: "[5583000000000]",
+      endereco: "Av. Gen. Edson Ramalho, 190, Manaíra",
+      bairro: "Manaíra",
+      cep: "58038-100",
+      telefone: null,
+      whatsapp: "558398129665",
+      instagram: "https://www.instagram.com/ortoligaveljoaopessoa/",
       mapsUrl: "[LINK GOOGLE MAPS JOAO PESSOA]",
       geo: { lat: "-7.1195", lng: "-34.8450" }
     }
