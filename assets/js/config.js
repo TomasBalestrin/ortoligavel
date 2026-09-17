@@ -26,8 +26,8 @@ window.ORTO = {
       telefone: null,
       whatsapp: "5513996545599",
       instagram: "https://www.instagram.com/ortoligavel_santos/",
-      mapsUrl: "[LINK GOOGLE MAPS SANTOS]",
-      geo: { lat: "-23.9608", lng: "-46.3336" }
+      mapsUrl: "https://maps.app.goo.gl/TQcSu36hFRZuCHhk9",
+      geo: { lat: "-23.9784737", lng: "-46.3090658" }
     },
     {
       id: "joao-pessoa",
@@ -40,8 +40,8 @@ window.ORTO = {
       telefone: null,
       whatsapp: "558398129665",
       instagram: "https://www.instagram.com/ortoligaveljoaopessoa/",
-      mapsUrl: "[LINK GOOGLE MAPS JOAO PESSOA]",
-      geo: { lat: "-7.1195", lng: "-34.8450" }
+      mapsUrl: "https://maps.app.goo.gl/F9qsGNn9K3KWmg448",
+      geo: { lat: "-7.1094678", lng: "-34.8268212" }
     }
   ],
 

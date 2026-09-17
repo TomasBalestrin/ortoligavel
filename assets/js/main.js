@@ -44,6 +44,13 @@
       else { el.setAttribute("href", ig); }
       return;
     }
+    if (chave === "mapa-src") {
+      var g = uni && uni.geo;
+      if (!g || faltando(g.lat) || faltando(g.lng)) return; // sem coordenadas: iframe fica vazio
+      var q = encodeURIComponent(g.lat + "," + g.lng);
+      el.setAttribute("src", "https://www.google.com/maps?q=" + q + "&z=16&output=embed");
+      return;
+    }
     var valor = uni ? uni[chave] : C[chave];
     el.innerHTML = texto(valor);
   });

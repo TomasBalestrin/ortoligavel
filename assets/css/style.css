@@ -136,13 +136,49 @@ h3{font-size:var(--t-xl)}
 .hdr__in{display:flex;align-items:center;gap:1.5rem;min-height:74px}
 .hdr__logo img{height:38px;width:auto}
 .nav{display:flex;align-items:center;gap:.35rem;margin-left:auto}
-.nav a{
+.nav>a{
   font-family:var(--display);font-size:var(--t-sm);font-weight:550;
   color:var(--marinho);padding:.55rem .85rem;border-radius:var(--r-full);
   transition:background .2s,color .2s;
 }
-.nav a:hover{background:var(--gelo);color:var(--marinho-900)}
+.nav>a:hover{background:var(--gelo);color:var(--marinho-900)}
 .hdr__cta{margin-left:.6rem}
+
+/* Dropdown "Tratamentos": abre ao passar o mouse ou focar por teclado.
+   O link em si continua indo para a seção da home (accordion), o
+   submenu é um atalho direto para cada página de tratamento. */
+.nav__drop{position:relative}
+.nav__drop>a{
+  font-family:var(--display);font-size:var(--t-sm);font-weight:550;
+  color:var(--marinho);padding:.55rem .85rem;border-radius:var(--r-full);
+  transition:background .2s,color .2s;display:inline-flex;align-items:center;gap:.3rem;
+}
+.nav__drop>a:hover{background:var(--gelo);color:var(--marinho-900)}
+.nav__drop>a svg{transition:transform .25s var(--ease)}
+.nav__drop:hover>a svg,.nav__drop:focus-within>a svg{transform:rotate(180deg)}
+
+.nav__menu{
+  position:absolute;top:calc(100% + .6rem);left:0;z-index:50;
+  min-width:280px;background:#fff;border:1px solid var(--linha);
+  border-radius:var(--r);box-shadow:var(--sombra-lg);padding:.5rem;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;
+}
+/* Ponte invisível entre o link e o menu, para o hover não "cair"
+   no vão de .6rem ao mover o mouse na diagonal até o submenu. */
+.nav__drop::after{
+  content:"";position:absolute;left:0;right:0;top:100%;height:.6rem;
+}
+.nav__drop:hover>.nav__menu,
+.nav__drop:focus-within>.nav__menu{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+.nav__menu a{
+  display:block;font-family:var(--corpo);font-size:var(--t-sm);font-weight:500;
+  color:var(--marinho-900);padding:.65rem .8rem;border-radius:var(--r-sm);
+  transition:background .15s,color .15s;
+}
+.nav__menu a:hover{background:var(--verde-claro);color:var(--verde-txt)}
 .burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;color:var(--marinho)}
 .burger:hover{background:var(--gelo)}
 
@@ -293,6 +329,8 @@ h3{font-size:var(--t-xl)}
 
 
 .trat h3{margin-bottom:.65rem}
+.trat h3 a{transition:color .2s}
+.trat h3 a:hover{color:var(--verde-txt)}
 .trat p{color:var(--tinta-suave);font-size:var(--t-sm);margin-bottom:1.4rem;flex:1}
 .trat__link{
   font-family:var(--display);font-weight:650;font-size:var(--t-sm);color:var(--marinho);
@@ -453,10 +491,19 @@ h3{font-size:var(--t-xl)}
 .unidades{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.4rem}
 .uni{
   background:#fff;border:1px solid var(--linha);border-radius:var(--r);
-  padding:2rem 1.8rem;display:flex;flex-direction:column;
+  display:flex;flex-direction:column;overflow:hidden;
   transition:box-shadow .3s var(--ease),transform .3s var(--ease);
 }
 .uni:hover{box-shadow:var(--sombra-lg);transform:translateY(-4px)}
+
+/* Mapa colado no topo do card, sem a margem do corpo. */
+.uni__mapa{
+  position:relative;aspect-ratio:16/9;background:var(--gelo-200);
+  border-bottom:1px solid var(--linha);
+}
+.uni__mapa iframe{width:100%;height:100%;border:0;display:block}
+
+.uni__corpo{padding:1.8rem;display:flex;flex-direction:column;flex:1}
 .uni__cidade{display:flex;align-items:center;gap:.7rem;margin-bottom:1.3rem}
 .uni__cidade h3{font-size:var(--t-xl)}
 .uni__uf{
