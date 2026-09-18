@@ -28,21 +28,23 @@ window.ORTO = {
       instagram: "https://www.instagram.com/ortoligavel_santos/",
       mapsUrl: "https://maps.app.goo.gl/TQcSu36hFRZuCHhk9",
       geo: { lat: "-23.9784737", lng: "-46.3090658" }
-    },
-    {
-      id: "joao-pessoa",
-      cidade: "João Pessoa",
-      uf: "PB",
-      regiao: "Paraíba",
-      endereco: "Av. Gen. Edson Ramalho, 190, Manaíra",
-      bairro: "Manaíra",
-      cep: "58038-100",
-      telefone: null,
-      whatsapp: "558398129665",
-      instagram: "https://www.instagram.com/ortoligaveljoaopessoa/",
-      mapsUrl: "https://maps.app.goo.gl/F9qsGNn9K3KWmg448",
-      geo: { lat: "-7.1094678", lng: "-34.8268212" }
     }
+    // Unidade João Pessoa removida do site a pedido da clínica.
+    // Dados mantidos aqui comentados caso queiram reativar no futuro:
+    // {
+    //   id: "joao-pessoa",
+    //   cidade: "João Pessoa",
+    //   uf: "PB",
+    //   regiao: "Paraíba",
+    //   endereco: "Av. Gen. Edson Ramalho, 190, Manaíra",
+    //   bairro: "Manaíra",
+    //   cep: "58038-100",
+    //   telefone: null,
+    //   whatsapp: "558398129665",
+    //   instagram: "https://www.instagram.com/ortoligaveljoaopessoa/",
+    //   mapsUrl: "https://maps.app.goo.gl/F9qsGNn9K3KWmg448",
+    //   geo: { lat: "-7.1094678", lng: "-34.8268212" }
+    // }
   ],
 
   // Mensagem que já vem escrita quando o paciente abre o WhatsApp

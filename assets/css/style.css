@@ -655,9 +655,15 @@ h3{font-size:var(--t-xl)}
 /* Passos numerados: uma sequência real (agendar → avaliar → documentar
    → contratar), então a numeração carrega informação de ordem. */
 .passos{
-  display:grid;gap:1.5rem;margin:1.5rem 0 2rem;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  display:grid;gap:1.5rem 1.2rem;margin:1.5rem 0 2rem;
+  grid-template-columns:repeat(2,1fr);
 }
+@media (min-width:640px){
+  .passos{grid-template-columns:repeat(4,1fr)}
+}
+/* TOHi tem 9 passos (não 4): 4 colunas fixas deixaria um item sozinho
+   na última linha, então essa variante volta ao auto-fit. */
+.passos--muitos{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .passo{position:relative;padding-left:3.2rem}
 .passo__num{
   position:absolute;left:0;top:0;width:2.4rem;height:2.4rem;border-radius:50%;
