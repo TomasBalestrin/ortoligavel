@@ -51,6 +51,11 @@
       el.setAttribute("src", "https://www.google.com/maps?q=" + q + "&z=16&output=embed");
       return;
     }
+    if (chave === "email-href") {
+      if (faltando(C.email)) { el.setAttribute("href", "#"); el.setAttribute("aria-disabled", "true"); }
+      else { el.setAttribute("href", "mailto:" + C.email); }
+      return;
+    }
     var valor = uni ? uni[chave] : C[chave];
     el.innerHTML = texto(valor);
   });

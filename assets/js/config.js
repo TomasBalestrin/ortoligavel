@@ -7,7 +7,7 @@
 window.ORTO = {
   dominio: "https://www.ortoligavel.com.br",
 
-  email: "[EMAIL DA CLINICA]",
+  email: "ortoligavelsantos@gmail.com",
   cro: "CRO/SP 7381",
   responsavelTecnico: "Dr. Claudio Figueiredo, CRO/SP 49.549",
   // Instagram do rodapé geral: aponta para a unidade matriz (Santos).
