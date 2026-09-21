@@ -404,6 +404,8 @@ h3{font-size:var(--t-xl)}
 }
 .autoridade h2,.autoridade h3{color:#fff}
 .autoridade .lead{color:rgba(255,255,255,.72)}
+.autoridade .lista+.lead{margin-top:1.1rem}
+.autoridade .lead+.lead{margin-top:.9rem;margin-bottom:1.5rem}
 .autoridade .eyebrow{color:var(--verde)}
 .autoridade .lista li{color:rgba(255,255,255,.72)}
 .autoridade .lista b{color:#fff}
