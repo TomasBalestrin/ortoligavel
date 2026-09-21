@@ -274,7 +274,9 @@ h3{font-size:var(--t-xl)}
     display:block;position:static;transform:none;
     width:100%;height:auto;
     max-height:56svh;object-fit:cover;object-position:50% 15%;
-    margin:0;
+    margin:0 0 -3rem;
+    -webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);
   }
 
   .hero__in{width:100%}
