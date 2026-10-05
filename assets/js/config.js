@@ -12,7 +12,7 @@ window.ORTO = {
   responsavelTecnico: "Dr. Claudio Figueiredo, CRO/SP 49.549",
   // Instagram do rodapé geral: aponta para a unidade matriz (Santos).
   instagram: "https://www.instagram.com/ortoligavel_santos/",
-  horario: "[SEG A SEX, 9H AS 19H]",
+  horario: "Segunda: 09:00 às 18:00<br>Terça a Quinta: 09:00 às 19:00<br>Sexta: 09:00 às 17:00",
 
   unidades: [
     {

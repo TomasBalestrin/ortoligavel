@@ -13,19 +13,20 @@
 
   var base = C.dominio || "";
 
-  // Tenta ler "SEG A SEX, 9H AS 19H" e transformar em horário estruturado.
-  // Se o texto não bater no padrão esperado, retorna undefined em vez de
-  // adivinhar — dado estruturado errado é pior que ausente.
+  // Tenta ler trechos como "SEG A SEX, 9H AS 19H" ou "SEG, 9H AS 18H"
+  // (um ou mais, separados por "<br>" ou ";") e transformar em horário
+  // estruturado. Se um trecho não bater no padrão esperado, ele é
+  // ignorado em vez de adivinhado — dado estruturado errado é pior
+  // que ausente.
   var DIAS = {
     "seg": "Monday", "ter": "Tuesday", "qua": "Wednesday",
     "qui": "Thursday", "sex": "Friday", "sáb": "Saturday", "sab": "Saturday", "dom": "Sunday"
   };
-  function horarioEstruturado(texto) {
-    if (vazio(texto)) return undefined;
+  function trechoEstruturado(texto) {
     var m = String(texto).toLowerCase()
-      .match(/(seg|ter|qua|qui|sex|s[aá]b|dom)[a-zç]*\s*a\s*(seg|ter|qua|qui|sex|s[aá]b|dom)[a-zç]*,?\s*(\d{1,2})h(?:(\d{2}))?\s*(?:as|às)\s*(\d{1,2})h(?:(\d{2}))?/);
+      .match(/(seg|ter|qua|qui|sex|s[aá]b|dom)[a-zç]*\s*(?:a\s*(seg|ter|qua|qui|sex|s[aá]b|dom)[a-zç]*)?[,:]?\s*(?:das\s*)?(\d{1,2})[h:](?:(\d{2}))?\s*(?:as|às)\s*(\d{1,2})[h:](?:(\d{2}))?/);
     if (!m) return undefined;
-    var de = DIAS[m[1].slice(0, 3)], ate = DIAS[m[2].slice(0, 3)];
+    var de = DIAS[m[1].slice(0, 3)], ate = DIAS[(m[2] || m[1]).slice(0, 3)];
     if (!de || !ate) return undefined;
     var ordem = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     var dias = [];
@@ -46,6 +47,14 @@
       opens: abre,
       closes: fecha
     };
+  }
+  function horarioEstruturado(texto) {
+    if (vazio(texto)) return undefined;
+    var partes = String(texto).split(/<br\s*\/?>|;/)
+      .map(trechoEstruturado)
+      .filter(Boolean);
+    if (!partes.length) return undefined;
+    return partes.length === 1 ? partes[0] : partes;
   }
 
   function clinica(u) {
