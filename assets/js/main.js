@@ -130,8 +130,9 @@
   function abreDepoimento(id) {
     if (!lightbox || !lightboxFrame || !id) return;
     lightboxFrame.innerHTML =
-      '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" ' +
-      'title="Depoimento em vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1" ' +
+      'width="100%" height="100%" title="Depoimento em vídeo" ' +
+      'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
     lightbox.classList.add("is-open");
     document.body.style.overflow = "hidden";
     lightboxClose.focus();
