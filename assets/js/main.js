@@ -122,6 +122,47 @@
     setTimeout(atualiza, 350);
   });
 
+  /* ---------- Depoimentos: palco com destaque central ---------- */
+  var palco = document.getElementById("depoPalco");
+  if (palco) {
+    var fichas = [].slice.call(palco.querySelectorAll(".depo__card"));
+    var atual = 0;
+
+    // Distância circular até o centro: -1 e 1 são os vizinhos visíveis,
+    // o resto fica fora do palco.
+    function posiciona() {
+      var n = fichas.length;
+      fichas.forEach(function (ficha, i) {
+        var d = i - atual;
+        if (d > n / 2) d -= n;
+        if (d < -n / 2) d += n;
+        ficha.setAttribute("data-pos", Math.abs(d) <= 1 ? String(d) : "fora");
+        // Só o central entra na ordem de tabulação.
+        var play = ficha.querySelector(".depo__play");
+        if (play) play.tabIndex = d === 0 ? 0 : -1;
+      });
+    }
+    function anda(passo) {
+      atual = (atual + passo + fichas.length) % fichas.length;
+      posiciona();
+    }
+
+    document.querySelectorAll("[data-depo-nav]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        anda(b.getAttribute("data-depo-nav") === "prox" ? 1 : -1);
+      });
+    });
+    // Clicar num vizinho traz ele para o centro em vez de abrir o vídeo.
+    palco.addEventListener("click", function (e) {
+      var ficha = e.target.closest(".depo__card");
+      if (!ficha) return;
+      var pos = ficha.getAttribute("data-pos");
+      if (pos === "-1" || pos === "1") { e.stopPropagation(); anda(Number(pos)); }
+    }, true);
+
+    posiciona();
+  }
+
   /* ---------- Lightbox de depoimentos em vídeo ---------- */
   var lightbox = document.getElementById("depoLightbox");
   var lightboxFrame = document.getElementById("depoLightboxFrame");
