@@ -122,6 +122,39 @@
     setTimeout(atualiza, 350);
   });
 
+  /* ---------- Lightbox de depoimentos em vídeo ---------- */
+  var lightbox = document.getElementById("depoLightbox");
+  var lightboxFrame = document.getElementById("depoLightboxFrame");
+  var lightboxClose = document.getElementById("depoLightboxClose");
+
+  function abreDepoimento(id) {
+    if (!lightbox || !lightboxFrame || !id) return;
+    lightboxFrame.innerHTML =
+      '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" ' +
+      'title="Depoimento em vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    lightboxClose.focus();
+  }
+  function fechaDepoimento() {
+    if (!lightbox) return;
+    lightbox.classList.remove("is-open");
+    document.body.style.overflow = "";
+    lightboxFrame.innerHTML = "";
+  }
+  document.querySelectorAll("[data-depo]").forEach(function (btn) {
+    btn.addEventListener("click", function () { abreDepoimento(btn.getAttribute("data-depo")); });
+  });
+  if (lightboxClose) lightboxClose.addEventListener("click", fechaDepoimento);
+  if (lightbox) {
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) fechaDepoimento();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && lightbox && lightbox.classList.contains("is-open")) fechaDepoimento();
+  });
+
   /* ---------- Revelação no scroll ---------- */
   var alvos = document.querySelectorAll(".rev");
   if (alvos.length && "IntersectionObserver" in window &&

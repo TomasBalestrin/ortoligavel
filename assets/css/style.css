@@ -394,6 +394,58 @@ h3{font-size:var(--t-xl)}
 }
 
 /* =============================================================
+   DEPOIMENTOS EM VÍDEO — credenciados e pacientes
+   ============================================================= */
+.depo__carrossel{position:relative}
+.depo .trilho{gap:1.4rem}
+.depo__card{
+  width:min(230px,66vw);aspect-ratio:9/16;border-radius:var(--r-lg);overflow:hidden;
+  position:relative;background:var(--marinho-900);box-shadow:var(--sombra);border:1px solid var(--linha);
+}
+.depo__card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:brightness(.82);transition:transform .4s var(--ease),filter .4s var(--ease);
+}
+.depo__card:hover img{transform:scale(1.04);filter:brightness(.68)}
+.depo__play{
+  position:absolute;inset:0;display:grid;place-items:center;border:0;background:transparent;
+  width:100%;height:100%;cursor:pointer;padding:0;
+}
+.depo__play::after{
+  content:"";width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(6px);transition:transform .25s var(--ease),background .25s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='22' height='22'%3E%3Cpath d='M8 5v14l11-7z' fill='%231B2A63'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center;
+}
+.depo__card:hover .depo__play::after{transform:scale(1.08);background:#fff}
+.depo__badge{
+  position:absolute;top:.9rem;left:.9rem;z-index:2;font-size:.64rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(14,22,54,.55);
+  backdrop-filter:blur(6px);padding:.32rem .6rem;border-radius:var(--r-full);
+  display:flex;align-items:center;gap:.35rem;
+}
+.depo__badge svg{flex:none}
+
+/* Lightbox de vídeo */
+.depo__lightbox{
+  position:fixed;inset:0;z-index:300;display:grid;place-items:center;
+  background:rgba(14,22,54,.86);backdrop-filter:blur(4px);padding:var(--gut);
+  opacity:0;pointer-events:none;transition:opacity .25s var(--ease);
+}
+.depo__lightbox.is-open{opacity:1;pointer-events:auto}
+.depo__lightbox-box{
+  position:relative;width:min(360px,92vw);aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;
+  background:#000;box-shadow:var(--sombra-lg);
+}
+.depo__lightbox-box iframe{width:100%;height:100%;border:0;display:block}
+.depo__lightbox-close{
+  position:absolute;top:-3rem;right:0;width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);color:#fff;
+  display:grid;place-items:center;cursor:pointer;transition:background .2s;
+}
+.depo__lightbox-close:hover{background:rgba(255,255,255,.24)}
+
+/* =============================================================
    AUTORIDADE — Dr. Claudio
    ============================================================= */
 .autoridade{background:var(--marinho-900);color:#fff;position:relative;overflow:hidden}
